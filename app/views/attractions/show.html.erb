@@ -1,0 +1,23 @@
+<p><strong>Name:</strong><%=@attraction.name%></p>
+<p><strong>Total Number of Users:</strong></p>
+<p><strong>Ticket Requirement:</strong><%=@attraction.tickets%></p>
+<p><strong>Height Requirement:</strong><%=@attraction.min_height%></p>
+<p><strong>Nausea Rating:</strong><%=@attraction.nausea_rating%></p>
+<p><strong>Happiness Rating:</strong><%=@attraction.happiness_rating%></p>
+
+<% if current_user.admin %>
+<%= link_to 'Edit Attraction', [:edit, @attraction] %></p>
+
+
+<% else %>
+
+<%= form_tag rides_new_path, method: 'post' %>
+<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+<%= hidden_field_tag "user_id", current_user.id %>
+<%= hidden_field_tag "attraction_id", @attraction.id%>
+<%= submit_tag "Go on this ride" %>
+
+<% end %>
+
+<a href="/attractions">Back</a>
+
