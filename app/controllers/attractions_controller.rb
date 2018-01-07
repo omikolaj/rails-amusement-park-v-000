@@ -8,7 +8,6 @@ class AttractionsController < ApplicationController
     end
 
     def edit
-        binding.pry
         @attraction = Attraction.find_by(:id => params[:id])
     end
 
